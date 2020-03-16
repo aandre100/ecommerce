@@ -10,11 +10,12 @@ class Page {
 			"data" =>[]
 	];
 
-	public function __construct($opts = array()){
+	public function __construct($opts = array(), $tpl_dir = "/views/"){
 		$this->options = array_merge($this->defaults, $opts);
 		$config = array(
-			"tpl_dir"   => $_SERVER["DOCUMENT_ROOT"]. "/views/",
-			"cache_dir" => $_SERVER["DOCUMENT_ROOT"] . "/views-cache/",
+			"base_url"  => null,
+			"tpl_dir"   => $_SERVER["DOCUMENT_ROOT"].$tpl_dir,
+			"cache_dir" => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
 			"debug"     => false //set to be false to improve speed
 			);
 		Tpl::configure( $config );
@@ -27,13 +28,14 @@ class Page {
 			$this->tpl->assign($key, $value);
 		}
 	}
-	public function setTpl($name, $data = array(), $returnHTML = false){
-		$this->setData($data);
-		return $this->tpl->draw($name, $returnHTML);
-	}
 	public function __destruct(){
 		$this->tpl->draw("footer");
 	}
+	public function setTpl($tplname, $data = array(), $returnHTML = false){
+		$this->setData($data);
+		return $this->tpl->draw($tplname, $returnHTML);
+	}
+
 
 }
 
