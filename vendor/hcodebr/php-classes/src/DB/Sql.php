@@ -2,7 +2,7 @@
 
 
 namespace Hcode\DB;
-require_once('/var/www/pass.php');
+require_once('/home/andre/pass.php');
 
 class Sql {
 
