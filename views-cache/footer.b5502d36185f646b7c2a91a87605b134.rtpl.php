@@ -1,4 +1,4 @@
-<!-- Control Sidebar -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
   <!-- Control sidebar content goes here -->
   <div class="p-3">
