@@ -2,8 +2,11 @@
 <aside class="control-sidebar control-sidebar-dark">
   <!-- Control sidebar content goes here -->
   <div class="p-3">
-    <h5>Title</h5>
-    <p>Sidebar content</p>
+    <h5>Opções</h5>
+    <div class="info">
+      <a href="/admin/logout" class="d-block">Logout</a>
+    </div>
+
   </div>
 </aside>
 <!-- /.control-sidebar -->
@@ -23,10 +26,10 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="res/admin/plugins/jquery/jquery.min.js"></script>
+<script src="/res/admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="res/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/res/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="res/admin/dist/js/adminlte.min.js"></script>
+<script src="/res/admin/dist/js/adminlte.min.js"></script>
 </body>
 </html>
