@@ -263,6 +263,20 @@ $app->post("/admin/categorias/:idcategory", function($idcategory){
 	exit;
 });
 
+$app->get("/categorias/:idcategory", function($idcategory){
+
+	$category = new Category();
+	$category->get((int)$idcategory);
+
+	$page = new Page();
+
+	$page->setTpl("category", [
+		"category" => $category->getValues(),
+		"products" => []
+	]);
+
+});
+
 $app->run();
 
 
