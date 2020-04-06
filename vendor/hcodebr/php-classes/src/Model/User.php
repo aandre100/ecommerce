@@ -208,7 +208,7 @@ public static function login($login, $password)
         $code = openssl_encrypt($dataRecovery['idrecovery'], 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
 
 				$code = base64_encode($code);
-        $link = "http://www.hcodecommerce.com.br/forgot/reset?code=$code";
+        $link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=$code";
         $mailer = new Mailer($data["desemail"], $data["desperson"], "Reset Password da Hcode Store", "forgot", array(
           "name" => $data["desperson"],
           "link" => $link

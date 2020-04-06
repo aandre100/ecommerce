@@ -74,7 +74,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="/forgot">Esqueci-me da password</a>
+        <a href="/admin/forgot">Esqueci-me da password</a>
       </p>
       <p class="mb-0">
         <a href="../res/admin/register.html" class="text-center">Register a new membership</a>

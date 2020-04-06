@@ -22,7 +22,7 @@ require_once("site.php");
 require_once("functions.php");
 require_once("admin.php");
 require_once("admin-user.php");
-require_once("forget.php");
+require_once("admin-forget.php");
 require_once("admin-category.php");
 require_once("admin-product.php");
 

@@ -6,44 +6,45 @@ use \Hcode\Model\User;
 
 
 
-$app->get("/forgot", function() {
+$app->get("/admin/forgot", function() {
 
-	$page = new Page([
-		"header" => false,
-		"footer" => false
+	$page = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
 	]);
 
 	$page->setTpl("forgot");
 
 });
 
-$app->post("/forgot", function(){
+$app->post("/admin/forgot", function(){
 
-	$user = User::getForgot($_POST["email"], false);
+	$user = User::getForgot($_POST["email"]);
 
-	header("Location: /forgot/sent");
+	header("Location: /admin/forgot/sent");
 	exit;
 
 });
 
-$app->get("/forgot/sent", function(){
+$app->get("/admin/forgot/sent", function(){
 
-	$page = new Page([
-		"header" => false,
-		"footer" => false
+	$page = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
 	]);
 
 	$page->setTpl("forgot-sent");
 
 });
 
-$app->get("/forgot/reset", function(){
+
+$app->get("/admin/forgot/reset", function(){
 
 	$user = User::validForgotDecrypt($_GET["code"]);
 
-	$page = new Page([
-		"header" => false,
-		"footer" => false
+	$page = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
 	]);
 
 	$page->setTpl("forgot-reset", array(
@@ -53,7 +54,7 @@ $app->get("/forgot/reset", function(){
 
 });
 
-$app->post("/forgot/reset", function(){
+$app->post("/admin/forgot/reset", function(){
 
 	$forgot = User::validForgotDecrypt($_POST["code"]);
 
@@ -67,9 +68,9 @@ $app->post("/forgot/reset", function(){
 
 	$user->setPassword($password);
 
-	$page = new Page([
-		"header" => false,
-		"footer" => false
+	$page = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
 	]);
 
 	$page->setTpl("forgot-reset-success");
