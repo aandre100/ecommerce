@@ -188,7 +188,7 @@ public static function login($login, $password)
       ":iduser"=>$this->getiduser()
     ));
   }
-  public static function getForgot($email){
+  public static function getForgot($email, $inadmin = true){
     $sql = new Sql();
     $results = $sql->select("SELECT * FROM tb_persons a INNER JOIN tb_users b USING(idperson) WHERE a.desemail = :email", array(
       ":email" => $email
@@ -208,7 +208,11 @@ public static function login($login, $password)
         $code = openssl_encrypt($dataRecovery['idrecovery'], 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
 
 				$code = base64_encode($code);
+        if($inadmin === true) {
         $link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=$code";
+        }else {
+        $link = "http://www.hcodecommerce.com.br/forgot/reset?code=$code";
+        }
         $mailer = new Mailer($data["desemail"], $data["desperson"], "Reset Password da Hcode Store", "forgot", array(
           "name" => $data["desperson"],
           "link" => $link
