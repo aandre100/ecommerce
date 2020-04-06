@@ -66,7 +66,9 @@ $app->post("/admin/users/:iduser", function($iduser){
 	$_POST["desperson"] = utf8_encode($_POST["desperson"]);
 	$_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 
+
 	$user->get((int)$iduser);
+	$_POST['despassword'] = $user->getdespassword();
 
 	$user->setData($_POST);
 
