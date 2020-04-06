@@ -180,25 +180,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/users" class="nav-link active">
+                <a href="/admin/users" class="nav-link">
                   <i class="fa fa-users nav-icon"></i>
                   <p>Utilizadores</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/categorias" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Categorias</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/admin/products" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Produtos
+                <!--<span class="right badge badge-danger">New</span>-->
               </p>
             </a>
           </li>
