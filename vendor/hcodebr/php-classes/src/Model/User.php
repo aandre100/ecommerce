@@ -314,8 +314,8 @@ public static function login($login, $password)
     $_SESSION[User::SUCCESS] = $msg;
   }
   public static function getSuccess(){
-    $msg = (isset($_SESSION[User::SUCCESS]) && $_SESSION[User::ERROR]) ? $_SESSION[User::ERROR] : '';
-    User::clearError();
+    $msg = (isset($_SESSION[User::SUCCESS]) && $_SESSION[User::SUCCESS]) ? $_SESSION[User::SUCCESS] : '';
+    User::clearSuccess();
     return $msg;
   }
   public static function clearSuccess(){
