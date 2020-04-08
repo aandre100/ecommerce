@@ -230,7 +230,7 @@ class Cart extends Model{
       public static function clearMsgError(){
         $_SESSION[Cart::SESSION_ERROR] = NULL;
       }
-      
+
       public function updateFreight(){
         if($this->getdeszipcode() != ''){
           $this->setFreight($this->getdeszipcode());
@@ -239,6 +239,7 @@ class Cart extends Model{
 
       public function getValues(){
         $this->getCalculateTotal();
+
         return parent::getValues();
       }
       public function getCalculateTotal(){
