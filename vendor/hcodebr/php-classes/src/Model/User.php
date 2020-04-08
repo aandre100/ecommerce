@@ -322,6 +322,22 @@ public static function login($login, $password)
     $_SESSION[User::SUCCESS] = NULL;
   }
 
+  public function getOrders(){
+    $sql = new Sql();
+    $results = $sql->select("
+    SELECT * FROM tb_orders a
+    INNER JOIN tb_ordersstatus b ON a.idstatus=b.idstatus
+    INNER JOIN tb_carts c ON a.idcart = c.idcart
+    INNER JOIN tb_users d ON d.iduser = a.iduser
+    INNER JOIN tb_addresses e ON e.idaddress = a.idaddress
+    INNER JOIN tb_persons f ON f.idperson = d.idperson
+    WHERE a.iduser = :iduser
+    ", [
+      ':iduser'=>$this->getiduser()
+    ]);
+    return $results;
+  }
+
 }
 
 
