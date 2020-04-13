@@ -49,9 +49,9 @@ $app->post("/admin/users/create", function(){
 	$user = new User();
 	$_POST["desperson"] = utf8_encode($_POST["desperson"]);
 	$_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
- 	$_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
- 		"cost"=>12
- 	]);
+ 	// $_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
+ 	// 	"cost"=>12
+ 	// ]);
 	$user->setData($_POST);
 	$user->save();
 	header("Location: /admin/users");

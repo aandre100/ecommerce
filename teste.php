@@ -94,7 +94,7 @@ class Sql {
 function getOrders(){
   $sql = new Sql();
   $results = $sql->select("
-  SELECT * FROM empresas_empresa WHERE actividade_id=7
+  SELECT * FROM empresas_empresa WHERE actividade_id=7 ORDER BY titulo
   ");
   return $results;
 }
@@ -113,18 +113,30 @@ function _convert($content) {
     return $content;
 }
 $cena = getOrders(); ?>
-
+<style>
+/* LIST #2 */
+.list2 { width:320px; }
+.list2 ul { font-style:italic; font-family:Georgia, Times, serif; font-size:24px; color:#bfe1f1;  }
+.list2 ul li { color: #009900; font-size:12px;}
+.list2 ul li p { padding:8px; font-style:normal; font-family:Arial; font-size:13px; color:#eee; border-left: 1px solid #999; }
+.list2 ul li em { display:block; font-size:18px; color:#00DD00; font-family:Georgia, Times, serif;}
+</style>
 
 <?php
-foreach($cena as $key => $value){ ?>
 
-  <?php echo $value['titulo']; ?><br>
-  <?php echo strip_tags($value['telefone']); ?><br>
-  <?php echo strip_tags($value['morada']); ?><br>
-  <?php echo strip_tags($value['cod_postal']); ?><br>
-  <?php echo strip_tags($value['localidade']); ?><br>
-  <?php echo strip_tags($value['descricao_actividade']); ?><br>
-  <p>&nbsp;</p>
+foreach($cena as $key => $value){ ?>
+<div class="list2">
+<ul>
+   <!--'<li class="list-group-item active">'.-->
+
+  <?php echo '<li><em>'.$value['titulo']; ?></em></li>
+  <?php echo '<li>'.$value['telefone']; ?></li>
+  <?php echo '<li>'.$value['morada']; ?></li>
+  <?php echo '<li>'.$value['cod_postal']; ?>&nbsp;<?php echo $value['localidade']; ?></li>
+  <?php echo '<li>'.$value['descricao_actividade']; ?></li>
+</ul>
+</div>
+<p>&nbsp;</p>
 
 
 <?php

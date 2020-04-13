@@ -25,6 +25,7 @@ require_once("admin-user.php");
 require_once("admin-forget.php");
 require_once("admin-category.php");
 require_once("admin-product.php");
+require_once("admin-orders.php");
 
 
 
