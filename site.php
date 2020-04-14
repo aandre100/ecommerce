@@ -140,7 +140,6 @@ $app->get("/categorias/:idcategory", function($idcategory){
 
 
 
-
 	$app->post("/checkout", function(){
 		if(!isset($_POST['zipcode']) || $_POST['zipcode'] === ''){
 			Address::setMsgErro("Informe o seu CEP");
@@ -193,10 +192,36 @@ $app->get("/categorias/:idcategory", function($idcategory){
 			'vltotal'=> $cart->getvltotal()
 		]);
 		$order->save();
+		switch((int)$_POST['payment-method']){
+			case 1:
+			header("Location: /order/".$order->getidorder()."/paypal");
+			break;
+			//preparado para mais formas de pagamento
+			case 2:
+			header("Location: /order/".$order->getidorder()."/paypal");
+			break;
+		}
 
-		header("Location: /order/".$order->getidorder());
 		exit;
 
+	});
+
+	$app->get("/order/:idorder/paypal", function($idorder){
+		User::verifyLogin(false);
+		$order = new Order();
+		$order->get((int)$idorder);
+
+		$cart = $order->getCart();
+
+		$page = new Page([
+			'header' => false,
+			'footer' => false
+		]);
+		$page->setTpl('payment-paypal', [
+			'order'    => $order->getValues(),
+			'cart'     => $cart->getValues(),
+			'products' => $cart->getProducts()
+		]);
 	});
 
 
